@@ -35,15 +35,35 @@ document.querySelector(".btn-roll").addEventListener("click", function shooshid(
         roundScore = roundScore + diceNumber;
         document.getElementById("current-" + activePlayer).textContent = roundScore;
     } else {
-        // document.getElementById("current-0").textContent=0;
-        // roundScore = 0;
-        roundScore = 0;
-        document.getElementById("current-" + activePlayer).textContent = 0;
-        activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
 
-        document.querySelector(".player-0-panel").classList.toggle("active");
-        document.querySelector(".player-1-panel").classList.toggle("active");
-        diceDom.style.display = 'none';
+        toglogchiinEelsolih();
     }
 });
 // toglogchiin eeljiin onoog oorchilno buusan too ni negees yalgaatai bol active toglogchiin onoog nemne
+document.querySelector(".btn-hold").addEventListener("click", function () {
+    // ug toglogch hojson eseh
+    scores[activePlayer] = scores[activePlayer] + roundScore;
+
+    document.getElementById("score-" + activePlayer).textContent=scores[activePlayer];
+
+    if(scores[activePlayer] >= 10) {
+        document.getElementById("name-" + activePlayer).innerHTML="<p>&#128151;Winner&#128151;</p>";
+        document.querySelector(".player-" + activePlayer + "-panel").classList.add('winner');
+        document.querySelector(".player-" + activePlayer + "-panel").classList.remove('active');
+    } else {
+        toglogchiinEelsolih();
+    }
+    
+    roundScore = 0;
+    document.getElementById("current-" + activePlayer).textContent=0;
+});
+
+function toglogchiinEelsolih() {
+    roundScore = 0;
+    document.getElementById("current-" + activePlayer).textContent = 0;
+    activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
+
+    document.querySelector(".player-0-panel").classList.toggle("active");
+    document.querySelector(".player-1-panel").classList.toggle("active");
+    diceDom.style.display = 'none';
+}
