@@ -11,11 +11,12 @@ var roundScore = 0;
 
 
 // program ehlehd boldeh
-document.getElementById("score-0").textContent=0;
-document.getElementById("score-1").textContent=0;
+// document.getElementById("score-0").textContent=0;
+// document.getElementById("score-1").textContent=0;
 
-document.getElementById("current-0").textContent=0;
-document.getElementById("current-1").textContent=0;
+// document.getElementById("current-0").textContent=0;
+// document.getElementById("current-1").textContent=0;
+initGame();
 // currunt onoog tegleh 
 
 
@@ -47,7 +48,7 @@ document.querySelector(".btn-hold").addEventListener("click", function () {
     document.getElementById("score-" + activePlayer).textContent=scores[activePlayer];
 
     if(scores[activePlayer] >= 10) {
-        document.getElementById("name-" + activePlayer).innerHTML="<p>&#128151;Winner&#128151;</p>";
+        document.getElementById("name-" + activePlayer).innerHTML="<p>&#128151;Winner&#128170;</p>";
         document.querySelector(".player-" + activePlayer + "-panel").classList.add('winner');
         document.querySelector(".player-" + activePlayer + "-panel").classList.remove('active');
     } else {
@@ -67,3 +68,47 @@ function toglogchiinEelsolih() {
     document.querySelector(".player-1-panel").classList.toggle("active");
     diceDom.style.display = 'none';
 }
+
+// restart tovchiin programchlal
+
+
+// document.querySelector(".btn-new").addEventListener("click", function () {
+//     location.reload();
+// })
+document.querySelector(".btn-new").addEventListener("click", initGame );
+
+function initGame() {
+    activePlayer = 0;
+
+// togldogch D giin togson onoog hadgalna
+scores = [0, 0];
+
+// tolgogchiin eeljindee avsan onoog hadgalah huvsahch
+roundScore = 0;
+
+// shoo ali talaara buusniig hadgalah huvsahch 1-6 gesen utga sanamsargui ogno
+
+
+// program ehlehd boldeh
+document.getElementById("score-0").textContent=0;
+document.getElementById("score-1").textContent=0;
+
+document.getElementById("current-0").textContent=0;
+document.getElementById("current-1").textContent=0;
+
+// toglogchdiin neriig heviin bolgono.
+document.getElementById("name-0").textContent="Player-1";
+document.getElementById("name-1").textContent="Player-2";
+
+//nemsen classa avj hayna
+document.querySelector(".player-0-panel").classList.remove('winner');
+document.querySelector(".player-1-panel").classList.remove('winner');
+
+document.querySelector(".player-0-panel").classList.remove("active");
+document.querySelector(".player-1-panel").classList.remove("active");
+
+document.querySelector(".player-0-panel").classList.add("active");
+
+var diceDom = document.querySelector(".dice");
+diceDom.style.display = 'none';
+};
