@@ -39,20 +39,21 @@ document.querySelector(".btn-roll").addEventListener("click", function shooshid(
         toglogchiinEelsolih();
     }
     } else {
-        alert("Ta дахин эхлэх товчыг дарж дахин тоглоно уу_")
+        alert("Ta дахин эхлэх товчыг дарж дахин тоглоно уу!");
     }
 });
 // toglogchiin eeljiin onoog oorchilno buusan too ni negees yalgaatai bol active toglogchiin onoog nemne
 document.querySelector(".btn-hold").addEventListener("click", function () {
         // ug toglogch hojson eseh
         scores[activePlayer] = scores[activePlayer] + roundScore;
-        isNewGame = false;
+        // end baisan
         document.getElementById("score-" + activePlayer).textContent=scores[activePlayer];
     
-        if(scores[activePlayer] >= 100) {
+        if(scores[activePlayer] >= 10) {
             document.getElementById("name-" + activePlayer).innerHTML="<p>&#128151;Winner&#128170;</p>";
             document.querySelector(".player-" + activePlayer + "-panel").classList.add('winner');
             document.querySelector(".player-" + activePlayer + "-panel").classList.remove('active');
+            isNewGame = false;
         } else {
             toglogchiinEelsolih();
         }
